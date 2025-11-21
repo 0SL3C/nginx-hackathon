@@ -1,57 +1,23 @@
+# NGINX Log Explorer & Anomaly Dashboard
+A Dashboard app that parses NGINX access logs in the browser, visualizes traffic and status trends, highlights anomalies, and optionally enriches IPs with geolocation and AI analysis.
+
+# Features
+### Dashboard
+- Requests over time, status code distribution, unique visitors, total data served, top endpoints.
+### Logs parsing
+- Filterable, sortable table of parsed NGINX entries (method, path, status, size, user agent, time).
+### Anomalies analysis
+- Heuristics: excessive 5xx, high-frequency requests, sequential crawling, excessive 404s, sensitive resource scans, suspicious user agents.
+- Drawer view with AI summary (optional, requires VITE_OPENAI_API_KEY).
+
+# Tech stack
+- Built with React, Vite, TypeScript, Tailwind CSS, Radix UI, TanStack Table, and Recharts.
+- No backend required; all processing happens client-side using a bundled sample log.
+- Optional integrations:
+Geoapify for IP geolocation dots map.
+OpenAI for concise anomaly analysis.
 # Environmental Variables
-Must configure `VITE_GEOAPI_KEY` for Fetching geolocation data from [Geoapify](https://www.geoapify.com/). You can get a free API key by signing up on their website.
-And `VITE_OPENAI_API_KEY` for OpenAI API.
-
-# React + TypeScript + Vite
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+##### ```VITE_GEOAPI_KEY```
+Key needed for fetching geolocation data from [Geoapify](https://www.geoapify.com/). You can get a free API key by signing up on their website.
+##### `VITE_OPENAI_API_KEY`
+Key needed for OpenAI API for anomaly analysis.

@@ -13,10 +13,9 @@ class NetworkLogService {
 
   async parseNetworkLogs() {
     try {
-      const response = await fetch(new URL("/src/assets/access.log", import.meta.url));
+      const response = await fetch(new URL("/nginx-hackathon/src/assets/access.log", import.meta.url));
       const text = await response.text();
       const lines = text.split("\n").filter(line => line.trim() !== "");
-
       const networkLogs: NetworkLog[] = [];
       let id = 0;
 
