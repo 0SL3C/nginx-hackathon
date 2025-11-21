@@ -29,7 +29,7 @@ let geoCache: GeoCache = {};
 
 async function loadGeoCache() {
   try {
-    const response = await fetch("../assets/geo-cache.json");
+    const response = await fetch(new URL("../assets/geo-cache.json", import.meta.url));
     geoCache = await response.json();
   } catch (error) {
     console.error("Failed to load geo cache:", error);
